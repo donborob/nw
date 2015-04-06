@@ -1,0 +1,20 @@
+<table class="table">
+  <tbody>
+  <td class="col1"><%= link_to 'All posts', posts_path%></td>
+  <td class="col1">My posts</td>
+  <td class="col2"><%= link_to 'New post', new_post_path%></td>
+  </tbody>
+</table>
+
+<% @posts.each do |post| %>
+    <div class="post">
+      <p class="title"><%= link_to post.title, post %></p>
+      <br>
+
+      <p class="content"><%= post.content %></p>
+      <br>
+      <% if post.user_id != nil %>
+          <p class="author">Posted by <%=link_to @authors[post.id], user_path(User.find(id=post.user_id))%></p>
+      <% end %>
+    </div>
+<% end %>

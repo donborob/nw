@@ -1,0 +1,30 @@
+<%if @user.avatar? %>
+<%= image_tag @user.avatar.url %>
+    <%else%>
+    <%=image_tag("default_avatar.png")%>
+<%end %>
+<h3><%=@user.name%></h3>
+<br>
+<br>
+<br>
+<%if @user.firstname? %>
+    <h5>Firstname</h5>
+    <p><%=@user.firstname%></p>
+<%end %>
+<%if @user.lastname? %>
+    <h5>Lastname</h5>
+    <p><%=@user.lastname%></p>
+<%end %>
+<%if @user.gender? %>
+    <h5>Gender</h5>
+    <p><%=@user.gender%></p>
+<%end %>
+
+<%if @user.birthday? %>
+    <h5>Birthday</h5>
+    <p><%=@user.birthday%></p>
+<%end %>
+<%if @user.extra? %>
+    <h5>About me</h5>
+    <p><%=@user.extra%></p>
+<%end %>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LabNw</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+<% if user_signed_in? %>
+<div class="menu">
+  <p class = "menu-element"><%=link_to 'My profile', user_path(current_user)%></p>
+  <p class = "menu-element"><%=link_to 'Members', posts_path%></p>
+  <p class = "menu-element"><%=link_to 'Posts', posts_path%></p>
+  <p class = "menu-element"><%=link_to 'Settings', user_edit_path(current_user)%></p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p class="logout">  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %></p>
+</div>
+<% end %>
+</body>
+</html>
