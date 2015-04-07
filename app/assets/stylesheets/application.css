@@ -13,7 +13,14 @@
  *= require_tree .
  *= require_self
  */
-
+@import "bootstrap";
+@import "twitter/bootstrap/scaffolding.less";
+@import "twitter/bootstrap/type.less";
+@import "twitter/bootstrap/code.less";
+@import "twitter/bootstrap/grid.less";
+@import "twitter/bootstrap/tables.less";
+@import "twitter/bootstrap/forms.less";
+@import "twitter/bootstrap/buttons.less";
 .menu-element {
     font-size: 20px;
     line-height: 140%;

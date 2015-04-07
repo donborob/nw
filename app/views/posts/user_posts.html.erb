@@ -1,20 +1,20 @@
 <table class="table">
   <tbody>
-  <td class="col1"><%= link_to 'All posts', posts_path%></td>
-  <td class="col1"><%= link_to 'My posts', user_posts_path(current_user)%></td>
-  <td class="col2"><%= link_to 'New post', new_post_path%></td>
+  <td class="col1"><%= link_to 'All posts', posts_path, class: 'btn-link'%></td>
+  <td class="col1"><%= link_to 'My posts', user_posts_path(current_user), class: 'btn-link'%></td>
+  <td class="col2"><%= link_to 'New post', new_post_path, class: 'btn-link'%></td>
   </tbody>
 </table>
 
 <% @posts.each do |post| %>
     <div class="post">
-      <p class="title"><%= link_to post.title, post %></p>
+      <p class="title"><%= link_to post.title, post, class: 'btn-link' %></p>
       <br>
 
       <p class="content"><%= post.content %></p>
       <br>
       <% if post.user_id != nil %>
-          <p class="author">Posted by <%=link_to @authors[post.id], user_path(User.find(id=post.user_id))%></p>
+          <p class="author">Posted by <%=link_to @authors[post.id], user_path(User.find(id=post.user_id)), class: 'btn-link'%></p>
     <% end %>
     </div>
 <% end %>

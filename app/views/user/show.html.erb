@@ -31,5 +31,5 @@
 <br>
 <br>
 <%if (@user.id != current_user.id) %>
-<p><%= link_to 'Posts by '+ @user.name, user_posts_path(@user)%></p>
+<p><%= link_to 'Posts by '+ @user.name, user_posts_path(@user), class: 'btn-link'%></p>
 <%end%>
