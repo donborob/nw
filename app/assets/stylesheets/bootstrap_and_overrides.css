@@ -5,10 +5,3 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
-@import "twitter/bootstrap/scaffolding.less";
-@import "twitter/bootstrap/type.less";
-@import "twitter/bootstrap/code.less";
-@import "twitter/bootstrap/grid.less";
-@import "twitter/bootstrap/tables.less";
-@import "twitter/bootstrap/forms.less";
-@import "twitter/bootstrap/buttons.less";
