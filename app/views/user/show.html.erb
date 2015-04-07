@@ -1,7 +1,7 @@
-<%if @user.avatar? %>
-<%= image_tag @user.avatar.url %>
+<%if @user.avatar?  %>
+<%= image_tag @user.avatar.url, class: "avatar"%>
     <%else%>
-    <%=image_tag("default_avatar.png")%>
+    <%=image_tag ("default_avatar.png"), class: 'avatar' %>
 <%end %>
 <h3><%=@user.name%></h3>
 <br>

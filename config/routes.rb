@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :conversations
+
+  resources :messages
+
   root 'home#index'
   resources :posts
   devise_for :users, controllers: {registrations: "registrations"}

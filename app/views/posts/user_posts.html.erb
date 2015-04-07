@@ -14,7 +14,7 @@
       <p class="content"><%= post.content %></p>
       <br>
       <% if post.user_id != nil %>
-          <p class="author">Posted by <%=link_to @authors[post.id], user_path(User.find(id=post.user_id)), class: 'btn-link'%></p>
+          <p class="author">Posted by <%=link_to @authors[post.id], user_path(User.find(id=post.user_id)), class: 'btn-link'%> at <%= post.created_at.strftime("%T %F") %></p>
     <% end %>
     </div>
 <% end %>
