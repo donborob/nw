@@ -1,6 +1,6 @@
 @import "bootstrap";
 p.title{
-  margin-left: 100px;
+  margin-left: 15%;
   font-weight: bold;
   color: #730E15;
   font-size: 30px;
@@ -12,10 +12,11 @@ p.title{
 p.content{
   width: 70%;
   line-height: 130%;
-  border-bottom: 4px
+  margin-left: 5%;
 }
 p.author{
-  margin-left: 30%;
+  margin-left: 20%;
+  font-size: 16px;
 }
 table{
 table-layout: fixed;

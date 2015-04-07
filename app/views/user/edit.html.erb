@@ -14,11 +14,11 @@
     </div>
     <div class="field">
       <%= f.label 'Birthday' %>
-      <%= f.date_select :birthday %>
+      <%= f.date_select :birthday, :start_year =>  1920, :end_year => Date.today.year%>
     </div>
     <div class="field">
       <%= f.label 'About me' %>
-      <%= f.text_area :extra %>
+      <%= f.text_area :extra, cols: 30, rows: 10 %>
     </div>
     <div class="field">
       <%= f.file_field :avatar %>

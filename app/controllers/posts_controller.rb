@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def user_posts
     set_user
     @authors = Hash.new
-    @posts = Post.where(user_id = @user.id)
+    @posts = Post.where(user_id: @user.id)
     @posts.each do |post|
       if(post.user_id!= nil)
         @user = User.find(id = post.user_id)
