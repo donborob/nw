@@ -4,8 +4,8 @@ class MessagesController < ApplicationController
   respond_to :html
 
   def index
-  @conversation = Conversation.find(params[:id])
-    @messages = @conversation.message
+ # @conversation = Conversation.find(params[:id])
+   # @messages = @conversation.message
     respond_with(@messages)
   end
 

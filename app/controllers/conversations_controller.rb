@@ -4,18 +4,18 @@ class ConversationsController < ApplicationController
   respond_to :html
 
   def index
-    @first = current_user
-    @second = User.find(params[:id])
-    @conversations = Conversation.find(first_id = current_user.id or second_id = current_user.id)
-    respond_with(@conversations)
+   # @first = current_user
+    #@second = User.find(params[:id])
+   # @conversations = Conversation.find(first_id = current_user.id or second_id = current_user.id)
+   # respond_with(@conversations)
   end
 
   def show
-    @first = current_user
-    @second = User.find(params[:id])
-    @conversation = Conversation.find((first_id = @first.id and second_id =@second.id ) or
+    #@first = current_user
+  #  @second = User.find(params[:id])
+   # @conversation = Conversation.find((first_id = @first.id and second_id =@second.id ) or
                                            (first_id = @second.id and second_id = @first.id ))
-    respond_with(@conversations)
+    #respond_with(@conversations)
   end
 
   def new
