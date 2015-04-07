@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   get 'user/:id' => 'user#show', as: :'user'
   get 'user/:id/edit' => 'user#edit', as: :'user_edit'
   patch 'user/:id' => 'user#update', as: :'user_update'
-
+  get 'user_posts/:id' => 'posts#user_posts', as: :'user_posts'
+  get 'user/:id/members' => 'user#index', as: :'user_all'
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 

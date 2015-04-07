@@ -1,8 +1,18 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  # GET /posts
-  # GET /posts.json
+  def user_posts
+    set_user
+    @authors = Hash.new
+    @posts = Post.where(user_id = @user.id)
+    @posts.each do |post|
+      if(post.user_id!= nil)
+        @user = User.find(id = post.user_id)
+        @authors[post.id]= @user.name
+      end
+    end
+  end
+
   def index
     @authors = Hash.new
     @posts = Post.all
@@ -73,6 +83,9 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params

@@ -15,6 +15,6 @@
       <br>
       <% if post.user_id != nil %>
           <p class="author">Posted by <%=link_to @authors[post.id], user_path(User.find(id=post.user_id))%></p>
-      <% end %>
+    <% end %>
     </div>
 <% end %>

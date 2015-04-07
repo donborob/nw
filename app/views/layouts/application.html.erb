@@ -12,7 +12,7 @@
 <% if user_signed_in? %>
 <div class="menu">
   <p class = "menu-element"><%=link_to 'My profile', user_path(current_user)%></p>
-  <p class = "menu-element"><%=link_to 'Members', posts_path%></p>
+  <p class = "menu-element"><%=link_to 'Members', user_all_path(current_user)%></p>
   <p class = "menu-element"><%=link_to 'Posts', posts_path%></p>
   <p class = "menu-element"><%=link_to 'Settings', user_edit_path(current_user)%></p>
   <br>

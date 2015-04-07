@@ -28,3 +28,8 @@
     <h5>About me</h5>
     <p><%=@user.extra%></p>
 <%end %>
+<br>
+<br>
+<%if (@user.id != current_user.id) %>
+<p><%= link_to 'Posts by '+ @user.name, user_posts_path(@user)%></p>
+<%end%>
