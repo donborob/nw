@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
-  resources :conversations
-
-  resources :messages
->>>>>>> master
-
   root 'home#index'
   resources :posts do
     resources :comments
