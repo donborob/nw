@@ -32,6 +32,7 @@ gem "twitter-bootstrap-rails"
 gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'pg'
+gem 'rails_12factor'
 
 
 # Use ActiveModel has_secure_password
