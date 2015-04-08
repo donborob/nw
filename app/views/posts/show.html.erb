@@ -1,8 +1,40 @@
 <div class="post">
-  <p class = "title"><%= link_to @post.title, @post %></p>
+  <p class = "title"><%= link_to @post.title, @post,  class: 'btn-link'%></p>
   <br>
   <p class = "content"><%=@post.content%></p>
+  <br>
+  <p class="author"><%=link_to @authors[@post.id], user_path(User.find(id=@post.user_id)),
+                                       class: 'btn-link'%> answered at <%= @post.created_at.strftime("%T %F") %></p>
 </div>
 
-<%= link_to 'Edit', edit_post_path(@post), class: 'btn-link' %> |
-<%= link_to 'Back', posts_path, class: 'btn-link' %>
+<%if @post.user_id == current_user.id%>
+<p style="padding-left: 40%"><%= link_to 'Edit', edit_post_path(@post), class: 'btn-link' %></p>
+<%end%>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h3>Comments</h3>
+<br>
+<%@comments.each do |comment|%>
+    <%if comment.user_id != nil%>
+    <p class="comment-content"><%=comment.content%></p>
+    <p class="comment-author"><%=link_to @authors1[comment.id], user_path(User.find(id=comment.user_id)),
+                                           class: 'btn-link'%> answered at <%= comment.created_at.strftime("%T %F") %></p>
+        <br>
+        <br>
+<%end%>
+<%end%>
+<br>
+<%= form_for [@post, @comment] do |f|%>
+    <div class="field">
+      <%= f.label 'Comment' %><br>
+      <%= f.text_area :content %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

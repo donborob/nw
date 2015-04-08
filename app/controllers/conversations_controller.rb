@@ -14,8 +14,7 @@ class ConversationsController < ApplicationController
     #@first = current_user
   #  @second = User.find(params[:id])
    # @conversation = Conversation.find((first_id = @first.id and second_id =@second.id ) or
-                                          # (first_id = @second.id and second_id = @first.id ))
-    #respond_with(@conversations)
+                                          # (first_id = @second.id and second_id = @first.id ))    #respond_with(@conversations)
   end
 
   def new

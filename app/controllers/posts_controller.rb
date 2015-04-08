@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy,]
 
   def user_posts
     set_user
     @authors = Hash.new
     @posts = Post.where(user_id: @user.id)
     @posts.each do |post|
-      if(post.user_id!= nil)
+      if (post.user_id!= nil)
         @user = User.find(id = post.user_id)
         @authors[post.id]= @user.name
       end
@@ -17,17 +17,35 @@ class PostsController < ApplicationController
     @authors = Hash.new
     @posts = Post.all
     @posts.each do |post|
-      if(post.user_id!= nil)
-      @user = User.find(id = post.user_id)
-      @authors[post.id]= @user.name
-        end
+      if (post.user_id!= nil)
+        @user = User.find(id = post.user_id)
+        @authors[post.id]= @user.name
+      end
     end
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-  end
+    @comments = @post.comments.all
+    @comment = @post.comments.new
+    @authors = Hash.new
+    @posts = Post.all
+    @posts.each do |post|
+      if (post.user_id!= nil)
+        @user = User.find(id = post.user_id)
+        @authors[post.id]= @user.name
+      end
+    end
+    @authors1 = Hash.new
+    @comments = @post.comments.all
+    @comments.each do |comment|
+      if (comment.post_id!= nil && comment.user_id!= nil)
+        @user = User.find(id=comment.user_id)
+        @authors1[comment.id]= @user.name
+      end
+    end
+    end
 
   # GET /posts/new
   def new
@@ -68,6 +86,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def add_comment
+    @comment = Comment.new(comment_params)
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to post_path(@post) }
+      end
+    end
+  end
+
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
@@ -79,17 +106,25 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
   def set_user
     @user = User.find(params[:id])
   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params[:post][:user_id] = current_user.id
-      params.require(:post).permit(:title, :content, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params[:post][:user_id] = current_user.id
+    params.require(:post).permit(:title, :content, :user_id)
+  end
+
+  def comment_params
+    set_post
+    param[:comment][:post_id] = @post.id
+    params.require(:comment).permit(:user_name, :content)
+  end
+
 end
