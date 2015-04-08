@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150408201215) do
 
   # These are extensions that must be enabled in order to support this database
@@ -39,6 +40,25 @@ ActiveRecord::Schema.define(version: 20150408201215) do
     t.datetime "updated_at"
   end
 
+=======
+ActiveRecord::Schema.define(version: 20150407194657) do
+
+  create_table "conversations", force: true do |t|
+    t.integer  "first_id"
+    t.integer  "second_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.text     "content"
+    t.string   "title"
+    t.integer  "conversation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+>>>>>>> master
   create_table "posts", force: true do |t|
     t.integer  "user_id",    default: 0,  null: false
     t.string   "title"
