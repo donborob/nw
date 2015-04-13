@@ -1,3 +1,26 @@
 // Place all the styles related to the Conversations controller here.
 // They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.messages{
+  margin-top: 6%;
+  margin-left: 2%;
+}
+p.message-date {
+  font-size: 14px;
+}
+td.message-text{
+  width: 70%;
+}
+p.content{
+line-height: 120%;
+  font-size: 18px;
+}
+td.message-date{
+  width: 20% ;
+  position: absolute;
+  text-align: left;
+}
+table.m{
+  table-layout: fixed;
+}

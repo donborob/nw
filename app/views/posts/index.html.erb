@@ -3,6 +3,8 @@
   <td class="col1"><%= link_to 'All posts', posts_path, class: 'btn-link'%></td>
   <td class="col1"><%= link_to 'My posts', user_posts_path(current_user), class: 'btn-link'%></td>
   <td class="col2"><%= link_to 'New post', new_post_path, class: 'btn-link'%></td>
+
+
   </tbody>
 </table>
 
@@ -17,5 +19,11 @@
           <p class="author">Posted by <%=link_to @authors[post.id], user_path(User.find(id=post.user_id)),
                                                  class: 'btn-link'%> at <%= post.created_at.strftime("%T %F") %></p>
       <% end %>
+
+      <div id = "like">
+        <% @post = post %>
+        <%= render 'likes/like_button' %>
+        <%= Like.count%>
+      </div>
     </div>
 <% end %>

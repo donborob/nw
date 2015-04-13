@@ -4,32 +4,29 @@ class ConversationsController < ApplicationController
   respond_to :html
 
   def index
-   # @first = current_user
-    #@second = User.find(params[:id])
-   # @conversations = Conversation.find(first_id = current_user.id or second_id = current_user.id)
-   # respond_with(@conversations)
   end
 
   def show
+    @messages = @conversation.messages.all
+    @message = @conversation.messages.new
   end
 
   def new
-    @conversation = Conversation.new
-    respond_with(@conversation)
+    @conversation
   end
 
   def edit
   end
 
   def create
-    @conversation = Conversation.new(conversation_params)
+    @conversation = current_user.conversations.new(conversation_params)
     @conversation.save
-    respond_with(@conversation)
-  end
-
-  def update
-    @conversation.update(conversation_params)
-    respond_with(@conversation)
+    user = User.find(id =  params[:conversation][:partner_id])
+    params[:conversation][:partner_id], params[:conversation][:user_id]=
+        params[:conversation][:user_id],params[:conversation][:partner_id]
+    conversation = user.conversations.new(conversation_params)
+    conversation.save
+    redirect_to(user_conversation_path(current_user, @conversation))
   end
 
   def destroy
@@ -43,6 +40,6 @@ class ConversationsController < ApplicationController
     end
 
     def conversation_params
-      params.require(:conversation).permit(:first_id, :second_id)
+      params.require(:conversation).permit(:user_id, :partner_id)
     end
 end

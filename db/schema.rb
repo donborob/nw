@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150408201215) do
+ActiveRecord::Schema.define(version: 20150412204219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +25,18 @@ ActiveRecord::Schema.define(version: 20150408201215) do
   end
 
   create_table "conversations", force: true do |t|
-    t.integer  "first_id"
-    t.integer  "second_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "partner_id"
+  end
+
+  create_table "likes", force: true do |t|
+    t.integer  "post_id"
+    t.boolean  "likes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "messages", force: true do |t|
@@ -38,27 +45,10 @@ ActiveRecord::Schema.define(version: 20150408201215) do
     t.integer  "conversation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
   end
 
-=======
-ActiveRecord::Schema.define(version: 20150407194657) do
-
-  create_table "conversations", force: true do |t|
-    t.integer  "first_id"
-    t.integer  "second_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "messages", force: true do |t|
-    t.text     "content"
-    t.string   "title"
-    t.integer  "conversation_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
->>>>>>> master
   create_table "posts", force: true do |t|
     t.integer  "user_id",    default: 0,  null: false
     t.string   "title"

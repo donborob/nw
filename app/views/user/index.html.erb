@@ -1,5 +1,26 @@
 <h2>Members</h2>
 <% @users.each do |user| %>
-<p><%=link_to user.name, user, class: 'btn-link' %></p>
-      <br>
+    <%if user.id != current_user.id %>
+    <p><%=link_to user.name, user, class: 'btn-link' %></p>
+    <%if Conversation.where("user_id = ? AND partner_id = ?",current_user.id, user.id).first != nil %>
+        <% @conversation = Conversation.where("user_id = ? AND partner_id = ?",current_user.id, user.id).first%>
+        <%= link_to "Conversation with #{user.name}", user_conversation_path(current_user, @conversation.id), class: "btn-link"%>
+    <%else%>
+        <%= form_for [current_user, @conversation] do |f| %>
+
+            <div class="field">
+              <%= f.hidden_field :user_id, value: current_user.id%>
+            </div>
+            <div class="field">
+              <%= f.hidden_field :partner_id, value: user.id  %>
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+        <% end %>
+    <%end%>
+    <br>
+    <br>
+    <br>
+    <%end%>
 <%end%>

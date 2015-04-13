@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def index
     @authors = Hash.new
+    @like = current_user.likes.new
     @posts = Post.all
     @posts.each do |post|
       if (post.user_id!= nil)

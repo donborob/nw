@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
   has_attached_file :avatar
   has_many :posts
   has_many :conversations
+  has_many :likes
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "inage/gif"]
 end

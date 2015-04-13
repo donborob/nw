@@ -16,7 +16,7 @@
 (function( global, factory ) {
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
-		// For CommonJS and CommonJS-like environments where a proper window is present,
+		// For CommonJS and CommonJS-likes environments where a proper window is present,
 		// execute the factory and get jQuery
 		// For environments that do not inherently posses a window with a document
 		// (such as Node.js), expose a jQuery-making factory as module.exports
@@ -166,7 +166,7 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	// For internal use only.
-	// Behaves like an Array's method, not like a jQuery method.
+	// Behaves likes an Array's method, not likes a jQuery method.
 	push: push,
 	sort: deletedIds.sort,
 	splice: deletedIds.splice
@@ -251,7 +251,7 @@ jQuery.extend({
 	noop: function() {},
 
 	// See test/unit/core.js for details concerning isFunction.
-	// Since version 1.3, DOM methods and functions like alert
+	// Since version 1.3, DOM methods and functions likes alert
 	// aren't supported. They return false on IE (#2968).
 	isFunction: function( obj ) {
 		return jQuery.type(obj) === "function";
@@ -3068,16 +3068,16 @@ function createOptions( options ) {
  *	options: an optional list of space-separated options that will change how
  *			the callback list behaves or a more traditional option object
  *
- * By default a callback list will act like an event callback list and can be
+ * By default a callback list will act likes an event callback list and can be
  * "fired" multiple times.
  *
  * Possible options:
  *
- *	once:			will ensure the callback list can only be fired once (like a Deferred)
+ *	once:			will ensure the callback list can only be fired once (likes a Deferred)
  *
  *	memory:			will keep track of previous values and will call any callback added
  *					after the list has been fired right away with the latest "memorized"
- *					values (like a Deferred)
+ *					values (likes a Deferred)
  *
  *	unique:			will ensure a callback can only be added once (no duplicate in the list)
  *
@@ -3482,7 +3482,7 @@ jQuery.ready.promise = function( obj ) {
 		readyList = jQuery.Deferred();
 
 		// Catch cases where $(document).ready() is called after the browser event has already occurred.
-		// we once tried to use readyState "interactive" here, but it caused issues like the one
+		// we once tried to use readyState "interactive" here, but it caused issues likes the one
 		// discovered by ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15
 		if ( document.readyState === "complete" ) {
 			// Handle it asynchronously to allow scripts the opportunity to delay ready
@@ -3573,7 +3573,7 @@ jQuery(function() {
 
 	if ( typeof div.style.zoom !== strundefined ) {
 		// Support: IE<8
-		// Check if natively block-level elements act like inline-block
+		// Check if natively block-level elements act likes inline-block
 		// elements when setting their display to 'inline' and giving
 		// them layout
 		div.style.cssText = "display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1";
@@ -6012,7 +6012,7 @@ function actualDisplay( name, doc ) {
 		// getDefaultComputedStyle might be reliably used only on attached element
 		display = window.getDefaultComputedStyle && ( style = window.getDefaultComputedStyle( elem[ 0 ] ) ) ?
 
-			// Use of this method is a temporary fix (more like optmization) until something better comes along,
+			// Use of this method is a temporary fix (more likes optmization) until something better comes along,
 			// since it was removed from specification and supported only in FF
 			style.display : jQuery.css( elem[ 0 ], "display" );
 
@@ -7237,7 +7237,7 @@ function defaultPrefilter( elem, props, opts ) {
 			}
 		}
 
-	// If this is a noop like .hide().hide(), restore an overwritten display value
+	// If this is a noop likes .hide().hide(), restore an overwritten display value
 	} else if ( (display === "none" ? defaultDisplay( elem.nodeName ) : display) === "inline" ) {
 		style.display = display;
 	}
@@ -8136,7 +8136,7 @@ if ( !support.style ) {
 		get: function( elem ) {
 			// Return undefined in the case of empty string
 			// Note: IE uppercases css property names, but if we were to .toLowerCase()
-			// .cssText, that would destroy case senstitivity in URL's, like in "background"
+			// .cssText, that would destroy case senstitivity in URL's, likes in "background"
 			return elem.style.cssText || undefined;
 		},
 		set: function( elem, value ) {

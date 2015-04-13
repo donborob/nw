@@ -18,9 +18,12 @@ class UserController < ApplicationController
       end
     end
   end
+
   def index
     @users = User.all
+    @conversation = Conversation.new
   end
+
   def user_params
     params.require(:user).permit(:avatar,:firstname,:lastname,:gender,:birthday,:extra);
   end
