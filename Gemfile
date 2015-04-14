@@ -33,6 +33,7 @@ gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'pg'
 gem 'rails_12factor'
+gem 'simple_form'
 
 
 # Use ActiveModel has_secure_password

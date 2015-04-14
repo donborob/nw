@@ -1,7 +1,7 @@
-<%= form_for [current_user, conversation, message] do |f|%>
+<%= simple_form_for [current_user, conversation, message] do |f|%>
     <div class="field" style="padding-left: 10%">
       <%= f.label 'text' %><br>
-      <%= f.text_area :content %>
+      <%= f.input :content%>
     </div>
     <div class="field" style="padding-left: 10%">
       <%= f.hidden_field :sender_id, value: current_user.id %>

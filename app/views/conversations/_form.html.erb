@@ -1,4 +1,4 @@
-<%= form_for [current_user, conversation] do |f| %>
+<%= simple_form_for [current_user, conversation] do |f| %>
 <div class="field">
   <%= f.hidden_field :partner_id, value: user.id  %>
 </div>

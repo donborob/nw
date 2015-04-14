@@ -1,13 +1,21 @@
-<% if current_user.likes.find_by_post_id(@post.id) %>
-    <%= form_for like, :html => { :method => :delete },
-                 :remote => true do |f| %>
-        <%= f.submit "Unlike" %>
+<% if current_user.likes.find_by_post_id(post.id) %>
+    <%@like = current_user.likes.find_by_post_id(post.id) %>
+    <%= simple_form_for @like, method: :delete,:remote => true do |f| %>
+        <%= f.hidden_field :post_id, value: post.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= button_tag(type: 'submit', class: "btn-link") do %>
+            <i class="icon-heart icon-grey"></i>
+        <% end %>
+        <%= Like.where(post_id: post.id).count%>
     <% end %>
 <% else %>
     <% @like = current_user.likes.new %>
-    <%= form_for @like, :url => {:controller => :likes, action: :create} ,:remote => true, :html => { :method => :post } do |f| %>
-        <%= f.hidden_field :post_id, value: @post.id %>
+    <%= simple_form_for @like, :url => {:controller => :likes, action: :create} ,:remote => true, :html => { :method => :post } do |f| %>
+        <%= f.hidden_field :post_id, value: post.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit "Like" %>
+        <%= button_tag(type: 'submit', class: "btn-link") do %>
+            <i class="icon-heart icon-red"></i>
+        <% end %>
+        <%= Like.where(post_id: post.id).count%>
     <% end %>
 <% end %>

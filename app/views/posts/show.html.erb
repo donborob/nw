@@ -4,12 +4,12 @@
   <br>
   <p class = "content"><%=@post.content%></p>
   <br>
+  <<div class = "like">
+  <%= render partial: 'likes/like_button', locals: {post: @post}  %>
+</div>
   <p class="author">Posted by <%=link_to @authors[@post.id], user_path(User.find(id=@post.user_id)),
-                                       class: 'btn-link'%> at <%= @post.created_at.strftime("%T %F") %></p>
-  <div id = "like">
-  <%= render 'likes/like_button' %>
-  <%= Like.where(post_id: @post.id).count%>
-    </div>
+                                         class: 'btn-link'%> at <%= @post.created_at.strftime("%T %F") %>
+
 </div>
 
 <%if @post.user_id == current_user.id%>
