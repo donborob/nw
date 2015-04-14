@@ -5,22 +5,6 @@ class CommentsController < ApplicationController
 
   respond_to :html
 
-  def index
-    @comments = Comment.all
-    respond_with(@comments)
-  end
-
-  def show
-    respond_with(@comment)
-  end
-
-  def new
-    @comment = Comment.new
-    respond_with(@comment)
-  end
-
-  def edit
-  end
 
   def create
     @post = Post.find(id = params[:post_id])
@@ -30,16 +14,6 @@ class CommentsController < ApplicationController
         format.html { redirect_to Post.find(id = params[:post_id])}
       end
     end
-  end
-
-  def update
-    @comment.update(comment_params)
-    respond_with(@comment)
-  end
-
-  def destroy
-    @comment.destroy
-    respond_with(@comment)
   end
 
   private

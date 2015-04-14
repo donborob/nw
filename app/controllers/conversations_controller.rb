@@ -3,19 +3,9 @@ class ConversationsController < ApplicationController
 
   respond_to :html
 
-  def index
-  end
-
   def show
     @messages = @conversation.messages.all
     @message = @conversation.messages.new
-  end
-
-  def new
-    @conversation
-  end
-
-  def edit
   end
 
   def create
@@ -27,11 +17,6 @@ class ConversationsController < ApplicationController
     conversation = user.conversations.new(conversation_params)
     conversation.save
     redirect_to(user_conversation_path(current_user, @conversation))
-  end
-
-  def destroy
-    @conversation.destroy
-    respond_with(@conversation)
   end
 
   private
