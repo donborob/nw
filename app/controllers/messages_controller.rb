@@ -1,25 +1,4 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
-
-  respond_to :html
-
-  def index
- # @conversation = Conversation.find(params[:id])
-   # @messages = @conversation.message
-    respond_with(@messages)
-  end
-
-  def show
-    respond_with(@message)
-  end
-
-  def new
-    @message = Message.new
-    respond_with(@message)
-  end
-
-  def edit
-  end
 
   def create
     @conversation = Conversation.find(params[:conversation_id])
@@ -34,15 +13,7 @@ class MessagesController < ApplicationController
     redirect_to(user_conversation_path(current_user, @message.conversation))
   end
 
-  def update
-    @message.update(message_params)
-    respond_with(@message)
-  end
 
-  def destroy
-    @message.destroy
-    respond_with(@message)
-  end
 
   private
     def set_message

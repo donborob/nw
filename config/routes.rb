@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   root 'home#index'
-  resources :user do
-    resources :conversations do
-      resources :messages
+  resources :user, :only => [:show, :edit,:update,:index] do
+    resources :conversations, :only => [:show, :create] do
+      resources :messages, :only => [:create]
     end
   end
 
   resources :likes, :only => [:create, :destroy]
   resources :posts do
-    resources :comments
+    resources :comments, :only => [:create]
     end
   devise_for :users, controllers: {registrations: "registrations"}
 
