@@ -1,29 +1,15 @@
-<%= form_for(@message) do |f| %>
-  <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
-
-      <ul>
-      <% @message.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for [current_user, conversation, message] do |f|%>
+    <div class="field" style="padding-left: 10%">
+      <%= f.label 'text' %><br>
+      <%= f.text_area :content %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :conversation_id %><br>
-    <%= f.number_field :conversation_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field" style="padding-left: 10%">
+      <%= f.hidden_field :sender_id, value: current_user.id %>
+    </div>
+    <div class="field" style="padding-left: 10%">
+      <%= f.hidden_field :receiver_id, value: @conversation.partner_id %>
+    </div>
+    <div class="actions" style="padding-left: 10%">
+      <%= f.submit %>
+    </div>
 <% end %>

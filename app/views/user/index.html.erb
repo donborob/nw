@@ -6,18 +6,7 @@
         <% @conversation = Conversation.where("user_id = ? AND partner_id = ?",current_user.id, user.id).first%>
         <%= link_to "Conversation with #{user.name}", user_conversation_path(current_user, @conversation.id), class: "btn-link"%>
     <%else%>
-        <%= form_for [current_user, @conversation] do |f| %>
-
-            <div class="field">
-              <%= f.hidden_field :user_id, value: current_user.id%>
-            </div>
-            <div class="field">
-              <%= f.hidden_field :partner_id, value: user.id  %>
-            </div>
-            <div class="actions">
-              <%= f.submit %>
-            </div>
-        <% end %>
+            <%= render partial: "conversations/form", locals: {conversation:@conversation, user:user} %>
     <%end%>
     <br>
     <br>
