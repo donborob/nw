@@ -23,6 +23,10 @@ class PostsController < ApplicationController
         @authors[post.id]= @user.name
       end
     end
+    respond_to do |format|
+	format.html {}
+	format.json {render json: @posts}
+    end
   end
 
   # GET /posts/1

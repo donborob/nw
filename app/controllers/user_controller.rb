@@ -22,6 +22,10 @@ class UserController < ApplicationController
   def index
     @users = User.all
     @conversation = Conversation.new
+    respond_to do |format|
+	format.html {}
+	format.json {render json: @users}
+    end
   end
 
   def user_params
